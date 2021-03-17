@@ -1,0 +1,23 @@
+class Solution:
+    def lemonadeChange(self, bills: List[int]) -> bool:
+        
+        fives = 0
+        tens = 0
+        for bill in bills:
+            target = bill - 5
+            # subtract 10 dollar if any
+            if target >= 10 and tens > 0:
+                tens -= 1
+                target -= 10
+            # subtract a number of 5 dollars if any
+            count = target/5
+            if fives >= count:
+                fives -= count
+            else:
+                return False # we dont have enough number of 5 dollars
+            # increment count of 5 or 10 dollar
+            if bill == 5:
+                fives += 1
+            elif bill == 10:
+                tens += 1
+        return True
