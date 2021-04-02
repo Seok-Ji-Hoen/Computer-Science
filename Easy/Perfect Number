@@ -1,0 +1,14 @@
+class Solution:
+    def checkPerfectNumber(self, num: int) -> bool:
+        
+        if num==1:
+            return False
+        output = []
+        for i in range(1,int(num**(1/2)+1)):
+            if num%i==0:
+                output.append(i)
+                x = num//i
+                if x!=num:
+                    output.append(x)
+        
+        return sum(output)==num
