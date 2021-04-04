@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isUnivalTree(self, root: TreeNode) -> bool:
+        h = []
+        
+        def helper(root):
+            
+            if root is None:
+                return True
+            
+            if h:
+                if root.val in h:
+                    return True and helper(root.left) and helper(root.right)
+                else:
+                    return False
+            
+            else:
+                h.append(root.val)
+                return True and helper(root.left) and helper(root.right)
+        
+        return helper(root)
