@@ -1,0 +1,36 @@
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        
+        def helper(x,y):
+            while y :
+                x, y = y, x%y
+            return x
+        
+        if len(deck)==1:
+            return False
+        
+        nums = set(deck)
+        
+        rep = []
+        
+        for i in nums :
+            rep.append(deck.count(i))
+        
+        if len(rep)==1:
+            return True
+        
+        rep = sorted(rep)
+        
+        if rep[0]==1:
+            return False
+    
+        temp = helper(rep[0],rep[1])
+        
+
+        for i in rep[2:]:
+            temp = helper(temp,i)
+            if temp == 1:
+                return False
+
+        
+        return False if temp==1 else True
