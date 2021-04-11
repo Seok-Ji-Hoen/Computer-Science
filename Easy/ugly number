@@ -1,0 +1,17 @@
+class Solution:
+    def isUgly(self, n: int) -> bool:
+        answer = False
+        
+        if n<=0:
+            return False
+        
+        nums = [2,3,5]
+        
+        for i in nums:
+            while n%i ==0:
+                n = n/i
+        
+        if n==1:
+            answer = True
+        
+        return answer
