@@ -1,0 +1,19 @@
+class Solution:
+    def findComplement(self, num: int) -> int:
+        output = ''
+        while num:
+            num, temp = num//2, str(num%2)
+            
+            output = temp + output 
+        
+        result = ''
+        
+        for i in output:
+            if i=='1':
+                result+= '0'
+            else:
+                result+='1'
+        
+        
+        return int(result,2)
+        
