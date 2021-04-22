@@ -1,0 +1,23 @@
+class Solution:
+    def arrangeCoins(self, n: int) -> int:
+        
+        output = 0
+        
+        while n>=0:
+            output, n = output+1, n-output
+            
+        return output-2
+        
+        
+class Solution:
+    def arrangeCoins(self, n: int) -> int:
+        
+        num = 1
+        
+        tmp = num*(num+1)/2
+        
+        while tmp<=n:
+            num+=1
+            tmp = num*(num+1)/2
+            
+        return num-1
