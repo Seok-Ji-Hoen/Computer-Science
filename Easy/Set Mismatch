@@ -1,0 +1,19 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        
+        n= len(nums)
+        s = set(nums)
+        C = Counter(nums)
+        missing = n
+        
+        for a, e in zip(s, range(1, n+1)):
+            if a!= e:
+                missing = e
+                break
+        
+        for key, value in C.items():
+            if value ==2:
+                dup = key
+                break
+        
+        return [dup,missing]
