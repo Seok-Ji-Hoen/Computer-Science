@@ -1,0 +1,11 @@
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        
+        output = 0
+        
+        while num:
+            x = num.pop(0)
+            output = output*10 + x
+        
+        output +=k
+        return list(str(output))
