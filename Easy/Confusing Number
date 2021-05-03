@@ -1,0 +1,26 @@
+class Solution:
+    def confusingNumber(self, N: int) -> bool:
+        
+        if N<10:
+            if N==6 or N==9:
+                return True
+        
+        digit = ['0','1','6','8','9']
+        
+        dig = [6,9]
+        
+        N = list(str(N))
+        
+        for i in N:
+            if i not in digit:
+                return False
+        
+        rN = N.copy()
+        
+        for i in range(len(rN)):
+            if rN[i]=='6':
+                rN[i]='9'
+            elif rN[i]=='9':
+                rN[i]='6'
+        
+        return not N==list(reversed(rN))
