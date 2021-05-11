@@ -1,0 +1,35 @@
+class Solution:
+    def findLHS(self, nums: List[int]) -> int:
+        
+        M = 0
+        
+        char = sorted(list(set(nums)))
+        
+        m = nums.count(char[0])
+        for i in char:
+            if i+1 in char:
+                temp =nums.count(i)+nums.count(i+1)
+                if M< temp:
+                    M = temp
+        
+        return M
+        
+class Solution:
+    def findLHS(self, nums: List[int]) -> int:
+        
+        h = {}
+        
+        for i in nums:
+            if i not in h:
+                h[i]=1
+            else:
+                h[i]+=1
+        M = 0
+        
+        for i,j in h.items():
+            if i+1 in h:
+                temp = j + h[i+1]
+                if temp>M:
+                    M = temp
+        
+        return M
