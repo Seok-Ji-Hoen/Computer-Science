@@ -1,0 +1,31 @@
+class Solution:
+    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        
+        
+        prev, now, nex = 0, 0, 0
+        
+        length = len(flowerbed)
+        output = 0
+        
+        if length==1:
+            prev, now, nex = 0, flowerbed[0], 0
+            
+            if flowerbed[0]==0:
+                output+=1
+        
+        
+        else:
+            for i in range(length):
+                if i==0:
+                    prev, now, nex = 0, flowerbed[i], flowerbed[i+1]
+                elif i==length-1:
+                    prev, now, nex = flowerbed[i-1], flowerbed[i], 0
+
+                else:
+                    prev, now, nex = flowerbed[i-1], flowerbed[i], flowerbed[i+1]
+
+                if prev==0 and prev==now and now==nex:
+                    output+=1
+                    flowerbed[i]=1
+        
+        return output>=n
