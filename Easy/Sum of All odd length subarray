@@ -1,0 +1,16 @@
+class Solution:
+    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+        output = 0
+        l = len(arr)
+        if l%2==0:
+            ran = l//2
+        else:
+            ran = l//2+1
+        for i in range(ran):
+            for j in range(l):
+                if j+2*i<l:
+                    output+=sum(arr[j:j+2*i+1])
+                else:
+                    break
+        
+        return output
