@@ -1,0 +1,48 @@
+class Solution:
+    def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
+        w1, w2 = None , None
+        m = len(wordsDict)
+        l = m
+        
+        for i in range(l):
+            
+            if wordsDict[i]==word1:
+                w1 = i
+            
+            if wordsDict[i]==word2:
+                w2 = i
+            
+            if w1!=None and w2!=None :
+                temp = abs(w1-w2)
+                
+                if temp<m:
+                    m = temp
+                
+        
+        return m
+        
+        
+class Solution:
+    def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
+        
+        m = len(wordsDict)
+        
+        w1, w2 = m, -m
+        
+        l = m
+        
+        for i in range(l):
+            
+            if wordsDict[i]==word1:
+                w1 = i
+            
+            if wordsDict[i]==word2:
+                w2 = i
+            
+            temp = abs(w1-w2)
+            
+            if temp<m:
+                m = temp
+                
+        
+        return m
