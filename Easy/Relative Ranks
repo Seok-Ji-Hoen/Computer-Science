@@ -1,0 +1,18 @@
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        
+        h = {}
+        
+        sort = sorted(score)[::-1]
+        
+        rank = { 2 :'Bronze Medal', 1 :'Silver Medal', 0 : 'Gold Medal'}
+        
+        for i in range(len(sort)):
+            
+            if i>=3:
+                h[sort[i]] = str(i+1)
+            else:
+                h[sort[i]] = rank[i]
+        
+        
+        return [h[output] for output in score ]
