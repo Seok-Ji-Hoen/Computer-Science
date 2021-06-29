@@ -1,0 +1,15 @@
+class Solution:
+    def generatePossibleNextMoves(self, currentState: str) -> List[str]:
+        
+        if len(currentState)<=1:
+            return []
+        
+        output = []
+        
+        for i in range(len(currentState)-1):
+            
+            if currentState[i]=='+' and currentState[i]==currentState[i+1]:
+                output.append(currentState[:i]+'--'+currentState[i+2:])
+            
+        
+        return output
