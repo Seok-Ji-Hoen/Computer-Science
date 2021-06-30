@@ -1,0 +1,43 @@
+class Solution:
+    def validWordAbbreviation(self, word: str, abbr: str) -> bool:
+        
+        abb = {}
+        key = 0
+        temp = ''
+        
+        if abbr.isdigit():
+            return True if len(word)==int(abbr) and len(abbr)==len(str(int(abbr))) else False
+        
+        for i in abbr:
+            
+            if i.isalpha() and temp!='':
+                if len(temp)!=len(str(int(temp))):
+                    return False
+                key = key + int(temp)
+                abb[key] = i
+                temp = ''
+                key+=1
+            
+            elif i.isalpha():
+                abb[key] = i
+                key+=1
+                
+            else:
+                if temp=='' and i=='0':
+                    return False
+                temp +=i
+        
+        
+        if temp!='':
+            if len(temp)!=len(str(int(temp))):
+                    return False
+            key+=int(temp)
+        
+        if key!=len(word):
+            return False
+        
+        for i,j in abb.items():
+            if word[i]!=j:
+                return False
+        
+        return True
