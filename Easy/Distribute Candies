@@ -1,0 +1,12 @@
+class Solution:
+    def distributeCandies(self, candyType: List[int]) -> int:
+        
+        cnt = len(candyType)//2
+        
+        kind = len(list(set(candyType)))
+        
+        if kind>cnt:
+            return cnt
+        
+        else:
+            return kind
