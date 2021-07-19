@@ -1,0 +1,23 @@
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        
+        if set(str1)!=set(str2):
+            return ''
+        
+        if len(str1)<len(str2):
+            str1, str2 = str2, str1
+        
+        i = 0
+        output = ''
+        results = []
+        
+        while i<len(str2):
+            
+            output += str2[i]
+            
+            if str2==output*(len(str2)//len(output)) and str1==output*(len(str1)//len(output)):
+                results.append(output)
+            
+            i+=1
+        
+        return results[-1] if results else ''
