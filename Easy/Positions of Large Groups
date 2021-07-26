@@ -1,0 +1,29 @@
+class Solution:
+    def largeGroupPositions(self, s: str) -> List[List[int]]:
+        
+        output = []
+        
+        temp = ''
+        
+        start = 0
+        
+        end = 0
+        
+        for i in range(len(s)):
+            
+            if temp == '' or s[i] == temp:
+                temp = s[i]
+                end = i
+                
+                if i==len(s)-1 and end -start>1:
+                    output.append([start,end])
+            
+            else:
+                
+                if end - start>1:
+                    output.append([start,end])
+                
+                start = i
+                temp = s[i]
+        
+        return output
