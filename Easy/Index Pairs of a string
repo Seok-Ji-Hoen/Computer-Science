@@ -1,0 +1,24 @@
+class Solution:
+    def indexPairs(self, text: str, words: List[str]) -> List[List[int]]:
+        
+        
+        output = []
+        
+        for word in words:
+            
+            idx = 0
+            temp = []
+            while idx<len(text):
+                
+                if text[idx:idx+len(word)] == word:
+                    temp.append([idx,idx+len(word)-1])
+                    
+                        
+                
+                idx+=1
+            
+            output.extend(temp)
+            
+        output.sort()
+        
+        return output
