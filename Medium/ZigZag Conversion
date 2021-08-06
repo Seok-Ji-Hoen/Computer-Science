@@ -1,0 +1,36 @@
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        
+        if numRows==1:
+            return s
+        
+        if numRows==2:
+            output = ''
+            
+            for i in range(0,len(s),2):
+                output+=s[i]
+            
+            for j in range(1,len(s),2):
+                output+=s[j]
+            
+            return output
+        
+        
+        output = ''
+        for i in range(numRows):
+            
+            for j in range(i,len(s),(numRows-1)*2):
+                
+                if i == 0 or i==numRows-1:
+                    
+                    output+=s[j]
+                    
+                else:
+                    output+=s[j]
+                    temp = j+(numRows-1)*2-2*i
+                    
+                    if temp<len(s):
+                        output+=s[temp]
+                    
+                    
+        return output
