@@ -1,0 +1,16 @@
+class Solution:
+    def constructRectangle(self, area: int) -> List[int]:
+        
+        diff = area
+        
+        for i in range(1,int(math.sqrt(area))+1):
+            
+            if area/i == area//i:
+                num1, num2 = i, area//i
+                
+                if num2-num1<diff:
+                    diff = num2 - num1
+                    
+                    output = [num2, num1]
+        
+        return output
