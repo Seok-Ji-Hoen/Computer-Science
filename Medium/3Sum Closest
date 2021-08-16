@@ -1,0 +1,14 @@
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        
+        combination = list(itertools.combinations(nums,3))
+        diff = math.inf
+        
+        for i in combination:
+            
+            if abs(sum(i)-target)<diff:
+                diff = abs(sum(i)-target)
+                
+                result = sum(i)
+        
+        return result
