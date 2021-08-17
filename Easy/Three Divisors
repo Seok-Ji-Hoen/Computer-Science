@@ -1,0 +1,17 @@
+class Solution:
+    def isThree(self, n: int) -> bool:
+        
+        if n==1:
+            return False
+        
+        sqrt = math.sqrt(n)
+        
+        if sqrt!=int(sqrt):
+            return False
+        
+        for num in range(2,int(math.sqrt(sqrt))+1):
+            
+            if sqrt/num == sqrt//num:
+                return False
+        
+        return True
