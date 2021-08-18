@@ -1,0 +1,27 @@
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        
+        odds = '0'
+        
+        for i in range(len(num)):
+            
+            if int(num[i])%2==1:
+                
+                odds = num[:i+1]
+        
+        return odds if odds!='0' else ''
+        
+        
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        
+        odds = '0'
+        
+        for i in range(len(num)-1,-1,-1):
+            
+            if int(num[i])%2==1:
+                
+                odds = num[:i+1]
+                break
+        
+        return odds if odds!='0' else ''
