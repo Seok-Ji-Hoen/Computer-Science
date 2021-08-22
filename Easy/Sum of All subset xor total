@@ -1,0 +1,42 @@
+class Solution:
+    def subsetXORSum(self, nums: List[int]) -> int:
+        
+        def comb(nums, n):
+            
+            combination = []
+            
+            if n==1:
+                for i in nums:
+                    combination.append([i])
+            
+            else:
+                for i in range(len(nums)-n+1):
+                    
+                    for temp in comb(nums[i+1:],n-1):
+                        
+                        temp.append(nums[i])
+                        combination.append(temp)
+            
+            return combination
+        
+        subsets = []
+        
+        for i in range(1,len(nums)+1):
+            
+            subsets = subsets + comb(nums,i)
+        
+        total = 0
+        
+        for sub in subsets:
+            
+            if len(sub)==1:
+                total+= sub[0]
+            
+            else:
+                temp = sub[0]
+                
+                for num in sub[1:]:
+                    temp = temp^num
+                total+= temp
+        
+        return total
