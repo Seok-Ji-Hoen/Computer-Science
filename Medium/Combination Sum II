@@ -1,0 +1,93 @@
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        output = []
+        nums = []
+        for num in candidates:
+            
+            if num<target:
+                nums.append(num)
+            
+            elif num==target:
+                
+                if [num] not in output:
+                    output.append([num])
+        
+        nums.sort()
+        def combine(nums, n):
+            comb =[]
+            if n==1:
+                for num in nums:
+                    if [num] not in comb:
+                        comb.append([num])
+                
+                return comb
+            
+            else:
+                
+                for i in range(len(nums)-n+1):
+                    
+                    for temp in combine(nums[i+1:], n-1):
+                        
+                        temp.append(nums[i])
+                    
+                        if temp not in comb:
+                            comb.append(temp)
+                
+                return comb
+        
+        
+        if len(nums)<2:
+            return output
+        
+        for i in range(2,len(nums)+1):
+            
+            combination = combine(nums,i)
+            
+            for subset in combination:
+                
+                if sum(subset)==target:
+                    
+                    if subset not in output:
+                        output.append(subset)
+                    
+        
+        return output
+        
+        
+        
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        output = []
+        
+        
+        counter = collections.Counter(candidates)
+        
+        counter = [(c, counter[c]) for c in counter]
+        
+        
+        def combination(comb, remain,curr, counter):
+            
+            if remain == 0 :
+                
+                output.append(list(comb))
+                return
+            elif remain<0:
+                return
+            
+            for i in range(curr, len(counter)):
+                
+                num, cnt = counter[i]
+                
+                if cnt>0:
+                    comb.append(num)
+                    counter[i] = (num, cnt -1)
+                    combination(comb, remain-num,i, counter)
+                    comb.pop()
+                    counter[i] = (num, cnt)
+                    
+                    
+        
+        combination([], target,0, counter)
+        
+        return output
+            
