@@ -1,0 +1,24 @@
+class Solution:
+    def checkZeroOnes(self, s: str) -> bool:
+        
+        len0, len1 = 0, 0
+        
+        temp0, temp1 =0, 0
+        
+        for i in s:
+            if i=='1':
+                temp1+=1
+                if temp1>len1:
+                    len1 = temp1
+                if temp0>len0:
+                    len0 = temp0
+                temp0 = 0
+            else:
+                temp0+=1
+                if temp0>len0:
+                    len0 = temp0
+                if temp1>len1:
+                    len1 = temp1
+                temp1 = 0
+        
+        return len1>len0
