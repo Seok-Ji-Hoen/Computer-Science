@@ -1,0 +1,12 @@
+class Solution:
+    def replaceDigits(self, s: str) -> str:
+        
+        output = ''
+        
+        for i in s:
+            
+            if i.isdigit():
+                output = output + chr(ord(output[-1])+int(i))
+            else:
+                output = output + i
+        return output
